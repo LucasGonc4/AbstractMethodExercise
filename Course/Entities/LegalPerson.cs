@@ -5,15 +5,11 @@ namespace Course.Entities.Enum
 {
     class LegalPerson : Contributor
     {
-        public string Name { get; set; }
+        public double EmployeesNumber { get; set; }
 
-        public double AnnualIncome { get; set; }
-
-        public double HealhExpenses { get; set; }
-
-        public LegalPerson(string name, double annualIncome, double healhExpenses) : base(name, annualIncome)
+        public LegalPerson(string name, double annualIncome, double employeesNumber) : base(name, annualIncome)
         {
-            HealhExpenses = healhExpenses;
+            EmployeesNumber = employeesNumber;
         }
 
         public LegalPerson()
@@ -22,7 +18,15 @@ namespace Course.Entities.Enum
 
         public override double Tax()
         {
-            throw new NotImplementedException();
+            if(EmployeesNumber > 10)
+            {
+                return AnnualIncome * 0.16;
+            }
+            else
+            {
+                return AnnualIncome * 0.14;
+            }
+            
         }
     }
 }
